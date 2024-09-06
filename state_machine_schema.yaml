@@ -1,0 +1,45 @@
+id: https://w3id.org/ontogpt/state_machine
+name: state_machine
+description: A simple schema for state machine diagrams
+imports:
+  - linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  state_machine: https://w3id.org/ontogpt/state_machine/
+
+classes:
+
+  StateMachine:
+    attributes:
+      name:
+        description: The name of the state machine
+        type: string
+      states:
+        description: The states in the state machine
+        type: State
+        multivalued: true
+      transitions:
+        description: The transitions between states
+        type: Transition
+        multivalued: true
+
+  State:
+    attributes:
+      name:
+        description: The name of the state
+        type: string
+      is_initial:
+        description: Whether this is the initial state
+        type: boolean
+
+  Transition:
+    attributes:
+      from_state:
+        description: The state this transition is from
+        type: State
+      to_state:
+        description: The state this transition is to
+        type: State
+      trigger:
+        description: The event that triggers this transition
+        type: string
